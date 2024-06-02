@@ -11,6 +11,7 @@ This project is a simple book management system implemented in Java. It provides
 - Connects to an H2 database for data storage.
 
 1 Ensure you have Java and Maven installed on your system.
+
 2. Set up the database connection properties in the `db.properties` file located in the `src/main/resources` directory. Modify the following properties as per your database setup:
 jdbc.url=jdbc:h2:~/bookManagement;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1
 jdbc.username=your-username
