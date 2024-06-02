@@ -6,10 +6,12 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+// Implements the DAOInterface and provides methods to interact with the database for book management.
 public class BookRepository implements DAOInterface
-{
+{ //to log errors and other class related messages
     private static final Logger logger = Logger.getLogger(BookRepository.class.getName());
+
+
     @Override
     public void save(Book book)
     {
@@ -34,6 +36,7 @@ public class BookRepository implements DAOInterface
         }
     }
         @Override
+//  Retrieves a book from the database by its unique ID.
     public Book getById(int id)
         {
     String sql = "SELECT * FROM books WHERE id = ?";
@@ -61,6 +64,7 @@ public class BookRepository implements DAOInterface
     }
 
     @Override
+    // Retrieves all books from the database.
     public List<Book> getAll()
     {
         List<Book> books = new ArrayList<>();
@@ -88,6 +92,7 @@ public class BookRepository implements DAOInterface
     }
 
     @Override
+    // Updates information for an existing book in the database.
     public void update(Book book)
     {
         String sql = "UPDATE books SET title = ?, author = ?, chapters_read = ?, chapters_total = ?, finished = ? WHERE id = ?";
@@ -108,6 +113,7 @@ public class BookRepository implements DAOInterface
     }
 
     @Override
+    // Deletes a book from the database by its unique ID.
     public void delete(int id)
     {
         String sql = "DELETE FROM books WHERE id = ?";
@@ -122,6 +128,7 @@ public class BookRepository implements DAOInterface
         }
     }
     @Override
+    // Deletes all books from the database.
     public void deleteAll()
     {
         String sql = "DELETE FROM books";

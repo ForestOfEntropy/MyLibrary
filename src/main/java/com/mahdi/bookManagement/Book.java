@@ -9,7 +9,7 @@ public class Book
     private int chaptersTotal;
     private boolean finished = false;
 
-
+//  Constructor to create a book with all attributes specified.
     public Book( String title, String author, int chaptersRead, int chaptersTotal, boolean finished)
     {
         this.title = title;
@@ -19,6 +19,7 @@ public class Book
         this.finished = finished;
     }
 
+//  Creates a book with known title, chaptersRead, chaptersTotal and status
     public Book(String title, int chaptersRead, int chaptersTotal, boolean finished)
     {
         setTitle(title);
@@ -28,6 +29,7 @@ public class Book
         setFinished(finished);
     }
 
+//  Creates a book with known title, chaptersRead and the status
     public Book(String title, int chaptersRead, boolean finished)
     {
         setTitle(title);
@@ -36,6 +38,8 @@ public class Book
         setChaptersTotal(99999);
         setFinished(finished);
     }
+
+    //  Creates a book with known title and chaptersRead
     public Book(String title, int chaptersRead)
     {
         setTitle(title);
