@@ -14,21 +14,23 @@ public class DatabaseConnection
 {
 //  for logging errors and other messages related to database connection.
     private static final Logger logger = Logger.getLogger(DatabaseConnection.class.getName());
-    // Name of the properties file containing database connection details.
+//  Name of the properties file containing database connection details.
     private static final String propertiesSource = "db.properties";
-    // Properties object to hold the database connection properties.
+//  Properties object to hold the database connection properties.
     private static final Properties properties = new Properties();
 
     static
     {
+//      Try to load the database connection properties from db.properties and also loads the JDBC Driver
         try
-        {// Load the database connection properties from db.properties and also loads the JDBC Driver
+        {
             properties.load(DatabaseConnection.class.getClassLoader().getResourceAsStream(propertiesSource));
             Class.forName(properties.getProperty("jdbc.driverClassName"));
 
 //          Try to establish a connection and execute any initialization queries.
             try (Connection conn = getConnection(); Statement stmt = conn.createStatement())
-            {   // Reads SQL script for creating tables from the sql file and executes it.
+            {
+//              Reads SQL script for creating tables from the sql file and executes it.
                 String createTableSQL = new String(Objects.requireNonNull(DatabaseConnection.class.getClassLoader()
                         .getResourceAsStream("createTables.sql")).readAllBytes());
                 stmt.execute(createTableSQL);
@@ -39,7 +41,7 @@ public class DatabaseConnection
         }
     }
 
-    // Returns a connection to the database.
+//  Returns a connection to the database.
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
                 properties.getProperty("jdbc.url"),
