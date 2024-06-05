@@ -8,7 +8,8 @@ import java.util.logging.Logger;
 
 // Implements the DAOInterface and provides methods to interact with the database for book management.
 public class BookRepository implements DAOInterface
-{ //to log errors and other class related messages
+{
+//  To log errors and other class related messages
     private static final Logger logger = Logger.getLogger(BookRepository.class.getName());
 
 
@@ -25,15 +26,18 @@ public class BookRepository implements DAOInterface
             stmt.setInt(4, book.getChaptersTotal());
             stmt.setBoolean(5, book.isFinished());
             stmt.executeUpdate();
+
             ResultSet rs = stmt.getGeneratedKeys();
+
             if (rs.next())
             {
                 book.setId(rs.getInt(1));
             }
-        } catch (SQLException e)
+        }
+         catch (SQLException e)
          {
         logger.log(Level.SEVERE, "Failed to save book", e);
-        }
+         }
     }
         @Override
 //  Retrieves a book from the database by its unique ID.
@@ -64,7 +68,7 @@ public class BookRepository implements DAOInterface
     }
 
     @Override
-    // Retrieves all books from the database.
+//  Retrieves all books from the database.
     public List<Book> getAll()
     {
         List<Book> books = new ArrayList<>();
@@ -92,7 +96,7 @@ public class BookRepository implements DAOInterface
     }
 
     @Override
-    // Updates information for an existing book in the database.
+//  Updates information for an existing book in the database.
     public void update(Book book)
     {
         String sql = "UPDATE books SET title = ?, author = ?, chapters_read = ?, chapters_total = ?, finished = ? WHERE id = ?";
@@ -113,7 +117,7 @@ public class BookRepository implements DAOInterface
     }
 
     @Override
-    // Deletes a book from the database by its unique ID.
+//  Deletes a book from the database by its unique ID.
     public void delete(int id)
     {
         String sql = "DELETE FROM books WHERE id = ?";
@@ -128,7 +132,7 @@ public class BookRepository implements DAOInterface
         }
     }
     @Override
-    // Deletes all books from the database.
+//  Deletes all books from the database.
     public void deleteAll()
     {
         String sql = "DELETE FROM books";

@@ -39,7 +39,7 @@ public class Book
         setFinished(finished);
     }
 
-    //  Creates a book with known title and chaptersRead
+//  Creates a book with known title and chaptersRead
     public Book(String title, int chaptersRead)
     {
         setTitle(title);
