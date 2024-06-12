@@ -1,14 +1,29 @@
-package com.mahdi.bookManagement;
+package com.mahdi.bookManagement.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Books")
 public class Book
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false)
     private String title;
+    @Column
     private String author;
+    @Column
     private int chaptersRead;
+    @Column
     private int chaptersTotal;
+    @Column
     private boolean finished = false;
 
+    public Book()
+    {
+
+    }
 //  Constructor to create a book with all attributes specified.
     public Book( String title, String author, int chaptersRead, int chaptersTotal, boolean finished)
     {
